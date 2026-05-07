@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sigma Safety & Health Consultancy — UTM-Qualified, MIROS-Certified ICOP Safety Specialists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></script>
+<style>
+  :root{
+    --bg:#0a1628;--bg-2:#0f1f3d;--ink:#0a1628;
+    --paper:#f5f1ea;--paper-2:#ebe5d8;
+    --accent:#ff6b35;--accent-2:#f7c948;--steel:#3a5074;
+    --line:rgba(10,22,40,.12);--line-dark:rgba(245,241,234,.15);
+    --utm-red:#7a1a1a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,241,234,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .logo{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;font-weight:700;font-size:22px;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+  .logo-mark{width:38px;height:38px;background:var(--ink);display:grid;place-items:center;color:var(--accent-2);font-size:18px;border-radius:2px;transform:rotate(-3deg)}
+  .logo em{font-style:italic;font-weight:500;color:var(--accent)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.02em;position:relative;padding-bottom:2px}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--accent);transition:width .3s ease}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{background:var(--ink);color:var(--paper);padding:11px 22px;border-radius:2px;font-size:13px;font-weight:600;letter-spacing:.04em;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s ease}
+  .nav-cta:hover{background:var(--accent);color:var(--ink)}
+  .menu-toggle{display:none;background:none;border:none;font-size:24px;color:var(--ink);cursor:pointer}
+
+  .hero{min-height:100vh;padding:140px 48px 80px;position:relative;background:radial-gradient(circle at 20% 30%,rgba(255,107,53,.06),transparent 50%),radial-gradient(circle at 80% 70%,rgba(247,201,72,.05),transparent 50%),var(--paper);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:center;max-width:1400px;margin:0 auto;position:relative;z-index:2}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);padding:8px 14px;border:1px solid var(--line);border-radius:2px;background:rgba(255,255,255,.5);margin-bottom:32px;animation:fadeUp .8s ease both}
+  .hero-eyebrow .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s ease infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .hero h1{font-family:'Fraunces',serif;font-size:clamp(44px,6vw,82px);line-height:1.02;letter-spacing:-.035em;font-weight:600;margin-bottom:28px;animation:fadeUp .9s ease .1s both}
+  .hero h1 .accent{font-style:italic;font-weight:500;color:var(--accent);position:relative;display:inline-block}
+  .hero h1 .accent::after{content:'';position:absolute;bottom:8px;left:0;right:0;height:8px;background:var(--accent-2);z-index:-1;opacity:.6}
+  .hero p.lede{font-size:18px;line-height:1.6;color:var(--steel);max-width:560px;margin-bottom:40px;animation:fadeUp .9s ease .2s both}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp .9s ease .3s both}
+  .btn-primary{background:var(--ink);color:var(--paper);padding:18px 32px;border-radius:2px;font-size:14px;font-weight:600;letter-spacing:.05em;text-decoration:none;display:inline-flex;align-items:center;gap:12px;transition:all .3s ease;text-transform:uppercase;border:1px solid var(--ink)}
+  .btn-primary:hover{background:var(--accent);border-color:var(--accent);color:var(--ink);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);padding:18px 32px;border-radius:2px;font-size:14px;font-weight:600;letter-spacing:.05em;text-decoration:none;display:inline-flex;align-items:center;gap:12px;transition:all .3s ease;text-transform:uppercase;border:1px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .hero-visual{position:relative;height:520px;animation:fadeUp 1s ease .4s both}
+  .hero-card{position:absolute;background:var(--ink);color:var(--paper);padding:32px;border-radius:4px;box-shadow:0 30px 60px rgba(10,22,40,.25)}
+  .card-1{top:0;right:40px;width:280px;transform:rotate(2deg)}
+  .card-2{bottom:60px;left:0;width:300px;transform:rotate(-3deg);background:var(--accent);color:var(--ink)}
+  .card-3{bottom:0;right:60px;width:240px;background:var(--paper-2);color:var(--ink);transform:rotate(4deg)}
+  .card-icon{width:48px;height:48px;display:grid;place-items:center;background:rgba(255,255,255,.1);border-radius:2px;font-size:22px;margin-bottom:18px}
+  .card-2 .card-icon{background:rgba(10,22,40,.1)}
+  .card-3 .card-icon{background:rgba(10,22,40,.1)}
+  .hero-card h4{font-family:'Fraunces',serif;font-size:22px;margin-bottom:8px;font-weight:600}
+  .hero-card p{font-size:13px;opacity:.85;line-height:1.5}
+  .hero-stats{max-width:1400px;margin:60px auto 0;display:flex;gap:60px;flex-wrap:wrap;padding-top:32px;border-top:1px solid var(--line);position:relative;z-index:2}
+  .stat .num{font-family:'Fraunces',serif;font-size:42px;font-weight:600;letter-spacing:-.02em;line-height:1}
+  .stat .label{font-size:12px;color:var(--steel);margin-top:8px;text-transform:uppercase;letter-spacing:.1em}
+
+  .marquee{background:var(--ink);color:var(--paper);padding:18px 0;overflow:hidden;border-top:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+  .marquee-track{display:flex;gap:60px;animation:scroll 35s linear infinite;white-space:nowrap}
+  .marquee-item{font-family:'Fraunces',serif;font-size:20px;font-style:italic;display:flex;align-items:center;gap:60px}
+  .marquee-item::after{content:'✦';color:var(--accent-2);font-size:14px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .section{padding:120px 48px}
+  .container{max-width:1400px;margin:0 auto}
+  .section-head{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;margin-bottom:80px;align-items:end}
+  .section-label{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .section-label::before{content:'';width:32px;height:1px;background:var(--accent)}
+  .section-title{font-family:'Fraunces',serif;font-size:clamp(36px,4.5vw,60px);line-height:1.05;letter-spacing:-.025em;font-weight:600}
+  .section-title em{font-style:italic;color:var(--accent);font-weight:500}
+  .section-desc{font-size:17px;color:var(--steel);line-height:1.7}
+
+  .about{background:var(--paper-2);position:relative}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .about-visual{aspect-ratio:4/5;background:linear-gradient(135deg,var(--ink) 0%,var(--bg-2) 100%);position:relative;overflow:hidden;border-radius:4px}
+  .about-visual::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0,transparent 30px,rgba(247,201,72,.04) 30px,rgba(247,201,72,.04) 60px)}
+  .about-badge{position:absolute;top:30px;left:30px;color:var(--accent-2);font-family:'Fraunces',serif;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+  .about-quote{position:absolute;bottom:40px;left:40px;right:40px;color:var(--paper);font-family:'Fraunces',serif;font-size:30px;line-height:1.2;font-style:italic;font-weight:500;letter-spacing:-.01em}
+  .about-quote .mark{font-size:80px;color:var(--accent);line-height:.5;display:block;margin-bottom:10px}
+  .about-content h2{font-family:'Fraunces',serif;font-size:48px;line-height:1.05;letter-spacing:-.025em;font-weight:600;margin-bottom:24px}
+  .about-content h2 em{color:var(--accent);font-style:italic;font-weight:500}
+  .about-content p{color:var(--steel);font-size:16px;line-height:1.75;margin-bottom:20px}
+  .about-features{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+  .about-feat{display:flex;gap:14px;align-items:flex-start}
+  .about-feat i{color:var(--accent);font-size:18px;margin-top:4px}
+  .about-feat strong{font-weight:600;display:block;margin-bottom:4px}
+  .about-feat span{font-size:14px;color:var(--steel)}
+
+  .services{background:var(--paper)}
+  .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+  .service{padding:50px 36px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:all .4s ease;position:relative}
+  .service:nth-child(2n){border-right:none}
+  .service:hover{background:var(--ink);color:var(--paper);transform:translateY(-4px)}
+  .service-num{font-family:'Fraunces',serif;font-size:14px;font-weight:500;color:var(--accent);letter-spacing:.1em}
+  .service-icon{font-size:38px;color:var(--accent);margin:32px 0 24px}
+  .service h3{font-family:'Fraunces',serif;font-size:28px;font-weight:600;line-height:1.2;letter-spacing:-.015em;margin-bottom:16px}
+  .service p{font-size:15px;line-height:1.65;color:var(--steel);transition:color .4s ease;margin-bottom:18px}
+  .service:hover p{color:rgba(245,241,234,.75)}
+  .service ul{list-style:none;margin-top:18px}
+  .service ul li{font-size:14px;color:var(--steel);padding:6px 0;display:flex;align-items:flex-start;gap:10px;transition:color .4s ease}
+  .service:hover ul li{color:rgba(245,241,234,.7)}
+  .service ul li::before{content:'→';color:var(--accent);font-weight:600;flex-shrink:0}
+
+  /* CREDENTIAL SECTION - Dual Certificates */
+  .credential{background:var(--ink);color:var(--paper);padding:120px 48px;position:relative;overflow:hidden}
+  .credential::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.15),transparent 70%)}
+  .credential::after{content:'';position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(247,201,72,.08),transparent 70%)}
+  .cred-inner{max-width:1400px;margin:0 auto;position:relative;z-index:2}
+  .cred-head{text-align:center;margin-bottom:80px;max-width:800px;margin-left:auto;margin-right:auto}
+  .cred-head .section-label{color:var(--accent-2);justify-content:center}
+  .cred-head .section-label::before{background:var(--accent-2)}
+  .cred-head h2{font-family:'Fraunces',serif;font-size:clamp(38px,4.5vw,62px);line-height:1.05;letter-spacing:-.025em;font-weight:600;margin-bottom:24px}
+  .cred-head h2 em{color:var(--accent);font-style:italic;font-weight:500}
+  .cred-head p{font-size:17px;color:rgba(245,241,234,.7);line-height:1.7}
+
+  .cert-row{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:50px;margin-bottom:60px;
+  }
+
+  /* UTM Certificate */
+  .cert-utm{
+    background:#fefefe;color:var(--ink);
+    padding:50px 45px;border-radius:6px;
+    box-shadow:0 40px 80px rgba(0,0,0,.4);
+    transform:rotate(-1.5deg);
+    position:relative;
+    border:1px solid #e8e3d8;
+  }
+  .cert-utm:hover{transform:rotate(0);transition:transform .5s ease}
+  .cert-utm-header{
+    text-align:center;margin-bottom:30px;
+    padding-bottom:20px;
+  }
+  .utm-badge{
+    display:inline-flex;align-items:center;gap:14px;
+    margin-bottom:8px;
+  }
+  .utm-shield{
+    width:50px;height:50px;
+    background:var(--utm-red);
+    color:#f7c948;
+    display:grid;place-items:center;
+    font-size:22px;
+    border-radius:50%;
+    border:2px solid #c9a449;
+  }
+  .utm-name{
+    font-family:'Fraunces',serif;
+    font-weight:800;font-size:32px;
+    color:var(--utm-red);
+    letter-spacing:-.02em;
+    line-height:1;
+  }
+  .utm-name small{
+    display:block;font-size:9px;
+    color:var(--ink);font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;
+    margin-top:3px;font-family:'Inter',sans-serif;
+  }
+  .cert-utm-intro{
+    text-align:center;font-size:13px;
+    color:var(--steel);margin-bottom:18px;
+  }
+  .cert-utm-name{
+    text-align:center;
+    font-family:'Fraunces',serif;
+    font-size:22px;font-weight:700;
+    letter-spacing:-.01em;
+    margin-bottom:16px;
+  }
+  .cert-utm-mid{
+    text-align:center;font-size:13px;
+    color:var(--steel);margin-bottom:14px;
+  }
+  .cert-utm-title{
+    font-family:'Pinyon Script',cursive;
+    font-size:36px;text-align:center;
+    color:var(--ink);
+    line-height:1.1;letter-spacing:-.01em;
+    margin-bottom:20px;
+    padding:0 20px;
+  }
+  .cert-utm-date{
+    text-align:center;
+    font-weight:700;font-size:15px;
+    letter-spacing:.05em;
+    margin-bottom:14px;
+  }
+  .cert-utm-fulfilled{
+    text-align:center;font-size:12px;
+    color:var(--steel);margin-bottom:24px;
+  }
+  .cert-utm-foot{
+    border-top:1px dashed rgba(10,22,40,.15);
+    padding-top:18px;
+    display:flex;justify-content:space-between;
+    align-items:center;
+  }
+  .cert-utm-foot .left{font-size:11px;color:var(--steel)}
+  .cert-utm-foot .left strong{display:block;color:var(--ink);font-size:12px;margin-top:2px}
+  .utm-seal{
+    width:50px;height:50px;
+    background:#c83232;
+    border-radius:50%;
+    position:relative;
+    flex-shrink:0;
+  }
+  .utm-seal::before{
+    content:'';position:absolute;inset:-4px;
+    background:#c83232;
+    border-radius:50%;
+    clip-path:polygon(50% 0%,55% 8%,65% 3%,67% 12%,77% 10%,76% 19%,86% 22%,82% 30%,90% 35%,84% 42%,90% 50%,84% 58%,90% 65%,82% 70%,86% 78%,76% 81%,77% 90%,67% 88%,65% 97%,55% 92%,50% 100%,45% 92%,35% 97%,33% 88%,23% 90%,24% 81%,14% 78%,18% 70%,10% 65%,16% 58%,10% 50%,16% 42%,10% 35%,18% 30%,14% 22%,24% 19%,23% 10%,33% 12%,35% 3%,45% 8%);
+  }
+  .cert-utm-num{
+    text-align:right;font-size:10px;
+    color:var(--utm-red);font-weight:700;
+    letter-spacing:.05em;
+  }
+
+  /* MIROS Certificate */
+  .cert-miros{
+    background:#fff;color:var(--ink);
+    padding:50px 40px;
+    border-radius:6px;
+    box-shadow:0 40px 80px rgba(0,0,0,.4);
+    transform:rotate(2deg);
+    position:relative;
+    border-top:8px solid #1a8754;
+    border-bottom:8px solid #f7c948;
+    overflow:hidden;
+  }
+  .cert-miros:hover{transform:rotate(0);transition:transform .5s ease}
+  .cert-corner-tl{position:absolute;top:0;left:0;width:0;height:0;border-top:50px solid #1a8754;border-right:50px solid transparent}
+  .cert-corner-br{position:absolute;bottom:0;right:0;width:0;height:0;border-bottom:50px solid #f7c948;border-left:50px solid transparent}
+  .cert-header{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:30px;padding-bottom:20px;border-bottom:1px dashed rgba(10,22,40,.15)}
+  .cert-logo{width:50px;height:50px;background:var(--ink);color:var(--accent-2);display:grid;place-items:center;font-size:22px;border-radius:50%}
+  .cert-issuer{font-family:'Fraunces',serif;font-weight:600;font-size:14px;letter-spacing:.05em}
+  .cert-issuer small{display:block;font-size:10px;color:var(--steel);font-weight:400;letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+  .cert-title{font-family:'Fraunces',serif;font-size:24px;font-weight:700;text-align:center;letter-spacing:-.01em;margin-bottom:10px}
+  .cert-sub{text-align:center;font-size:11px;color:var(--steel);letter-spacing:.15em;text-transform:uppercase;font-weight:600;margin-bottom:24px}
+  .cert-body{text-align:center;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:20px}
+  .cert-body .label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:8px}
+  .cert-name{font-family:'Fraunces',serif;font-size:22px;font-weight:700;letter-spacing:-.01em;margin-bottom:14px}
+  .cert-course{font-size:13px;font-weight:600;line-height:1.4;color:var(--ink)}
+  .cert-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--steel);letter-spacing:.05em}
+  .cert-meta div{display:flex;flex-direction:column;gap:2px}
+  .cert-meta strong{color:var(--ink);font-weight:600;font-size:12px}
+  .cert-stamp{position:absolute;top:30px;right:30px;width:80px;height:80px;border:2px solid var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-family:'Fraunces',serif;font-size:11px;font-weight:600;text-align:center;line-height:1.1;transform:rotate(15deg);text-transform:uppercase;letter-spacing:.05em}
+
+  /* Cert points below */
+  .cred-points-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:24px;margin-top:40px;
+  }
+  .cred-points-grid.four{
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  /* ====== INDUSTRY GALLERY ====== */
+  .industries{
+    background:var(--paper);
+    padding:120px 48px;
+    position:relative;
+  }
+  .industries-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:280px;
+    gap:18px;
+    margin-top:60px;
+  }
+  .industry-card{
+    position:relative;
+    overflow:hidden;
+    border-radius:4px;
+    cursor:pointer;
+    background:var(--ink);
+  }
+  .industry-card:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .industry-card:nth-child(4){grid-column:span 2}
+  .industry-card img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .8s ease, filter .4s ease;
+    filter:saturate(.85) brightness(.9);
+  }
+  .industry-card:hover img{
+    transform:scale(1.08);
+    filter:saturate(1) brightness(1);
+  }
+  .industry-card::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%,rgba(10,22,40,.85) 100%);
+    pointer-events:none;
+  }
+  .industry-meta{
+    position:absolute;
+    bottom:24px;left:24px;right:24px;
+    color:var(--paper);
+    z-index:2;
+    transform:translateY(8px);
+    transition:transform .4s ease;
+  }
+  .industry-card:hover .industry-meta{
+    transform:translateY(0);
+  }
+  .industry-meta .tag{
+    display:inline-block;
+    font-size:10px;letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--accent-2);
+    font-weight:600;
+    margin-bottom:8px;
+    padding:4px 10px;
+    background:rgba(10,22,40,.5);
+    backdrop-filter:blur(4px);
+    border-radius:2px;
+  }
+  .industry-meta h4{
+    font-family:'Fraunces',serif;
+    font-size:24px;
+    font-weight:600;
+    line-height:1.15;
+    letter-spacing:-.015em;
+    margin-bottom:6px;
+  }
+  .industry-meta p{
+    font-size:13px;
+    color:rgba(245,241,234,.8);
+    line-height:1.4;
+    max-width:90%;
+  }
+  .industry-card:nth-child(1) .industry-meta h4{font-size:32px}
+  .cred-point-card{
+    background:rgba(245,241,234,.04);
+    border:1px solid rgba(245,241,234,.1);
+    padding:30px 26px;
+    border-radius:4px;
+    transition:all .3s ease;
+  }
+  .cred-point-card:hover{
+    background:rgba(245,241,234,.08);
+    transform:translateY(-4px);
+    border-color:var(--accent-2);
+  }
+  .cred-point-card i{
+    color:var(--accent-2);font-size:26px;
+    margin-bottom:18px;display:block;
+  }
+  .cred-point-card strong{
+    display:block;font-family:'Fraunces',serif;
+    font-size:18px;font-weight:600;margin-bottom:8px;
+  }
+  .cred-point-card span{
+    font-size:13.5px;color:rgba(245,241,234,.65);line-height:1.55;
+  }
+
+  .quals{background:var(--paper-2);position:relative;overflow:hidden}
+  .quals-list{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+  .qual-item{padding:32px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:center;transition:all .3s ease;padding-left:24px;padding-right:24px}
+  .qual-item:nth-child(odd){border-right:1px solid var(--line)}
+  .qual-item:hover{background:rgba(255,255,255,.5)}
+  .qual-item:hover .qual-num{color:var(--accent)}
+  .qual-num{font-family:'Fraunces',serif;font-size:36px;font-weight:500;color:var(--steel);transition:color .3s ease}
+  .qual-content h4{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:6px;line-height:1.3}
+  .qual-content p{font-size:13px;color:var(--steel);line-height:1.5}
+  .qual-icon{color:var(--accent);font-size:20px}
+
+  .why{background:var(--paper)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+  .why-card{background:var(--paper);padding:40px 30px;border:1px solid var(--line);transition:all .3s ease}
+  .why-card:hover{background:var(--ink);color:var(--paper);transform:translateY(-6px);border-color:var(--ink)}
+  .why-icon{width:60px;height:60px;background:var(--accent);display:grid;place-items:center;color:var(--ink);font-size:24px;border-radius:2px;margin-bottom:24px;transition:all .3s ease}
+  .why-card:hover .why-icon{background:var(--accent-2)}
+  .why-card h4{font-family:'Fraunces',serif;font-size:22px;font-weight:600;line-height:1.25;letter-spacing:-.01em;margin-bottom:12px}
+  .why-card p{font-size:14px;line-height:1.6;color:var(--steel);transition:color .3s ease}
+  .why-card:hover p{color:rgba(245,241,234,.75)}
+
+  .contact{background:var(--ink);color:var(--paper);padding:140px 48px;position:relative;overflow:hidden}
+  .contact::before{content:'SAFETY FIRST';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Fraunces',serif;font-size:clamp(120px,22vw,320px);font-weight:700;color:rgba(245,241,234,.025);letter-spacing:-.04em;white-space:nowrap;pointer-events:none}
+  .contact-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2}
+  .contact-eyebrow{color:var(--accent-2);font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-bottom:24px}
+  .contact h2{font-family:'Fraunces',serif;font-size:clamp(44px,6vw,76px);line-height:1.05;letter-spacing:-.03em;font-weight:600;margin-bottom:32px}
+  .contact h2 em{color:var(--accent);font-style:italic;font-weight:500}
+  .contact p.contact-lede{font-size:18px;color:rgba(245,241,234,.7);max-width:620px;margin:0 auto 48px;line-height:1.65}
+  .contact-options{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:780px;margin:0 auto 32px}
+  .contact-card{background:rgba(245,241,234,.04);border:1px solid rgba(245,241,234,.1);padding:36px 28px;text-align:left;text-decoration:none;color:var(--paper);transition:all .3s ease;border-radius:4px}
+  .contact-card:hover{background:#25D366;border-color:#25D366;transform:translateY(-4px)}
+  .contact-card .label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:12px;font-weight:600}
+  .contact-card:hover .label{color:rgba(255,255,255,.9)}
+  .contact-card .num{font-family:'Fraunces',serif;font-size:32px;font-weight:600;letter-spacing:-.01em;line-height:1.1;margin-bottom:6px}
+  .contact-card .who{font-size:13px;color:rgba(245,241,234,.6);transition:color .3s ease}
+  .contact-card:hover .who{color:rgba(255,255,255,.85)}
+  .contact-card .wa-icon{float:right;font-size:32px;color:#25D366;transition:color .3s ease}
+  .contact-card:hover .wa-icon{color:#fff}
+  .contact-email{margin-top:24px;font-size:15px;color:rgba(245,241,234,.7);display:inline-flex;align-items:center;gap:10px;text-decoration:none;border-bottom:1px solid rgba(245,241,234,.2);padding-bottom:4px;transition:all .3s ease}
+  .contact-email:hover{color:var(--accent-2);border-color:var(--accent-2)}
+  .contact-note{margin-top:40px;font-size:12px;color:rgba(245,241,234,.5);letter-spacing:.1em}
+
+  footer{background:#06101f;color:var(--paper);padding:60px 48px 30px}
+  .foot{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:50px;padding-bottom:40px;border-bottom:1px solid var(--line-dark)}
+  .foot-brand .logo{color:var(--paper);margin-bottom:18px}
+  .foot-brand p{font-size:14px;color:rgba(245,241,234,.6);line-height:1.6;max-width:360px}
+  .foot h5{font-family:'Fraunces',serif;font-size:18px;margin-bottom:18px;font-weight:600}
+  .foot ul{list-style:none}
+  .foot li{margin-bottom:10px}
+  .foot a{color:rgba(245,241,234,.65);text-decoration:none;font-size:14px;transition:color .2s}
+  .foot a:hover{color:var(--accent-2)}
+  .foot-bottom{max-width:1400px;margin:0 auto;padding-top:30px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(245,241,234,.4);letter-spacing:.05em}
+
+  .float-wa{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:grid;place-items:center;color:#fff;text-decoration:none;font-size:28px;box-shadow:0 10px 30px rgba(37,211,102,.4);z-index:99;animation:float 3s ease infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  @media(max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-visual{height:420px}
+    .about-grid{grid-template-columns:1fr;gap:50px}
+    .cert-row{grid-template-columns:1fr;gap:40px}
+    .cred-points-grid{grid-template-columns:1fr 1fr;gap:16px}
+    .cred-points-grid.four{grid-template-columns:1fr 1fr}
+    .industries-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:240px}
+    .industry-card:nth-child(1){grid-column:span 2;grid-row:span 1}
+    .industry-card:nth-child(4){grid-column:span 2}
+    .quals-list{grid-template-columns:1fr}
+    .qual-item:nth-child(odd){border-right:none}
+    .why-grid{grid-template-columns:repeat(2,1fr)}
+    .section-head{grid-template-columns:1fr;gap:30px}
+    .foot{grid-template-columns:1fr 1fr;gap:40px}
+  }
+  @media(max-width:680px){
+    .nav{padding:16px 20px}
+    .nav-links{display:none}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--paper);padding:24px;border-bottom:1px solid var(--line)}
+    .menu-toggle{display:block}
+    .hero{padding:110px 20px 60px}
+    .hero-stats{gap:30px;margin-top:40px;padding:30px 0 0}
+    .stat .num{font-size:32px}
+    .hero-visual{height:380px}
+    .card-1,.card-2,.card-3{width:75%}
+    .section{padding:80px 20px}
+    .credential{padding:80px 20px}
+    .services-grid{grid-template-columns:1fr}
+    .service{border-right:none !important}
+    .why-grid{grid-template-columns:1fr}
+    .contact-options{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column;gap:12px;text-align:center}
+    .contact{padding:90px 20px}
+    .qual-item{grid-template-columns:60px 1fr;padding:24px 16px}
+    .qual-num{font-size:28px}
+    .qual-icon{display:none}
+    .cert-utm,.cert-miros{padding:30px 24px;transform:none}
+    .cert-stamp{width:60px;height:60px;font-size:9px;top:20px;right:20px}
+    .cert-name,.cert-utm-name{font-size:18px}
+    .cert-title{font-size:18px}
+    .cert-utm-title{font-size:26px}
+    .utm-name{font-size:24px}
+    .industries{padding:80px 20px}
+    .industries-grid{grid-template-columns:1fr;grid-auto-rows:220px;gap:14px}
+    .industry-card:nth-child(1){grid-column:span 1;grid-row:span 1}
+    .industry-card:nth-child(4){grid-column:span 1}
+    .industry-card:nth-child(1) .industry-meta h4{font-size:24px}
+    .industry-meta h4{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#" class="logo">
+    <span class="logo-mark"><i class="fas fa-shield-halved"></i></span>
+    SIGMA<em>Safety</em>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#industries">Industries</a>
+    <a href="#credential">Certified</a>
+    <a href="#contact" class="nav-cta"><i class="fab fa-whatsapp"></i> Contact</a>
+  </div>
+  <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        UTM · MIROS · CIDB · NIOSH Certified
+      </div>
+      <h1>
+        ICOP Safety experts for <span class="accent">transportation</span> & logistics.
+      </h1>
+      <p class="lede">
+        SIGMA is a local Malaysian consultancy backed by formal qualifications from UTM, MIROS, CIDB, and NIOSH — specializing in internal audits of ICOP Safety documents, training, and compliance courses for the transportation, logistics, mechanical & electrical industries.
+      </p>
+      <div class="hero-cta">
+        <a href="https://wa.me/60143039980?text=Salam%2C%20saya%20berminat%20dengan%20perkhidmatan%20Sigma%20Safety" class="btn-primary">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
+        <a href="#services" class="btn-ghost">
+          Our Services <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card card-1">
+        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h4>UTM Qualified</h4>
+        <p>Certified & qualified by Universiti Teknologi Malaysia</p>
+      </div>
+      <div class="hero-card card-2">
+        <div class="card-icon"><i class="fas fa-award"></i></div>
+        <h4>MIROS Certified</h4>
+        <p>WRRS OSH-C accredited road safety coordinator</p>
+      </div>
+      <div class="hero-card card-3">
+        <div class="card-icon"><i class="fas fa-truck-fast"></i></div>
+        <h4>APAD Compliant</h4>
+        <p>Transport sector specialist</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><div class="num">UTM</div><div class="label">Qualified & Certified</div></div>
+    <div class="stat"><div class="num">MIROS</div><div class="label">WRRS OSH-C</div></div>
+    <div class="stat"><div class="num">CIDB</div><div class="label">Certified</div></div>
+    <div class="stat"><div class="num">NIOSH</div><div class="label">Certified</div></div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">UTM Qualified</span>
+    <span class="marquee-item">MIROS Certified</span>
+    <span class="marquee-item">CIDB Certified</span>
+    <span class="marquee-item">NIOSH Certified</span>
+    <span class="marquee-item">WRRS OSH-C</span>
+    <span class="marquee-item">ICOP Safety</span>
+    <span class="marquee-item">APAD Compliant</span>
+    <span class="marquee-item">ISO 45001</span>
+    <span class="marquee-item">PERKESO</span>
+    <span class="marquee-item">UTM Qualified</span>
+    <span class="marquee-item">MIROS Certified</span>
+    <span class="marquee-item">CIDB Certified</span>
+    <span class="marquee-item">NIOSH Certified</span>
+    <span class="marquee-item">WRRS OSH-C</span>
+    <span class="marquee-item">ICOP Safety</span>
+    <span class="marquee-item">APAD Compliant</span>
+    <span class="marquee-item">ISO 45001</span>
+    <span class="marquee-item">PERKESO</span>
+  </div>
+</div>
+
+<section class="section about reveal" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-badge">— SIGMA Safety</div>
+        <div class="about-quote">
+          <span class="mark">“</span>
+          Comprehensive operational safety, from documentation to audit assessment.
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">About Us</div>
+        <h2>Your trusted partner in <em>regulatory compliance</em>.</h2>
+        <p>SIGMA is a local company with deep experience in safety and regulatory compliance across the transportation and mechanical & electrical industries. We offer professional services specializing in internal audits of ICOP Safety documents, training, and safety-related courses.</p>
+        <p>Our commitment is to help organizations meet the requirements of authorities such as APAD (Land Public Transport Agency) and comply with ICOP Safety standards — ensuring your operations are safe, compliant, and audit-ready.</p>
+        <div class="about-features">
+          <div class="about-feat"><i class="fas fa-check-circle"></i><div><strong>UTM Qualified</strong><span>Certified by UTM</span></div></div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i><div><strong>MIROS Certified</strong><span>WRRS OSH-C accredited</span></div></div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i><div><strong>End-to-End Support</strong><span>Until audit assessment</span></div></div>
+          <div class="about-feat"><i class="fas fa-check-circle"></i><div><strong>Customer Friendly</strong><span>Easy to understand approach</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section services reveal" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">Two pillars of <em>compliance</em></h2>
+      </div>
+      <p class="section-desc">We deliver focused safety consultancy through two core service lines — internal auditing and professional training — built specifically around the ICOP Safety framework and APAD requirements.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service">
+        <div class="service-num">01 / 02</div>
+        <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+        <h3>Internal Audit of ICOP Security Documents</h3>
+        <p>End-to-end auditing of your safety documentation system to ensure full compliance with ICOP requirements before formal assessment.</p>
+        <ul>
+          <li>Document compliance review</li>
+          <li>Risk and control assessment</li>
+          <li>Accident investigations</li>
+          <li>Improvement suggestions and corrective actions</li>
+        </ul>
+      </div>
+      <div class="service">
+        <div class="service-num">02 / 02</div>
+        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Security Training & Courses</h3>
+        <p>Tailored training programs that build internal capability in safety management, compliance procedures, and emergency preparedness.</p>
+        <ul>
+          <li>Introduction to ICOP Security for companies</li>
+          <li>Staff training on security management & compliance</li>
+          <li>Risk awareness and emergency response courses</li>
+          <li>Customized in-house workshops</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES GALLERY -->
+<section class="industries reveal" id="industries">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Industries We Serve</div>
+        <h2 class="section-title">Sectors we <em>cover</em></h2>
+      </div>
+      <p class="section-desc">From freight transportation and logistics operations to road safety management and on-site safety training — our consultancy is built around the realities of Malaysia's regulated industries.</p>
+    </div>
+
+    <div class="industries-grid">
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&q=80&auto=format&fit=crop" alt="Transportation industry" loading="lazy">
+        <div class="industry-meta">
+          <span class="tag">01 — Sector</span>
+          <h4>Transportation</h4>
+          <p>ICOP Safety compliance for commercial fleets, freight, and passenger transport operations.</p>
+        </div>
+      </div>
+
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?w=900&q=80&auto=format&fit=crop" alt="Logistics warehouse" loading="lazy">
+        <div class="industry-meta">
+          <span class="tag">02 — Sector</span>
+          <h4>Logistics</h4>
+          <p>Warehouse safety, loading operations, and supply chain compliance.</p>
+        </div>
+      </div>
+
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=900&q=80&auto=format&fit=crop" alt="Road safety management" loading="lazy">
+        <div class="industry-meta">
+          <span class="tag">03 — Sector</span>
+          <h4>Road Safety Management</h4>
+          <p>WRRS OSH-C aligned road safety risk management for road-related work.</p>
+        </div>
+      </div>
+
+      <div class="industry-card">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80&auto=format&fit=crop" alt="Safety training session" loading="lazy">
+        <div class="industry-meta">
+          <span class="tag">04 — Sector</span>
+          <h4>Safety Training</h4>
+          <p>In-house and on-site OSH training programs designed for compliance and real workplace impact.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIAL HIGHLIGHT -->
+<section class="credential reveal" id="credential">
+  <div class="cred-inner">
+    <div class="cred-head">
+      <div class="section-label">Officially Certified</div>
+      <h2>Backed by <em>UTM</em>, <em>MIROS</em>, <em>CIDB</em> & <em>NIOSH</em>.</h2>
+      <p>Our team is qualified and certified by Malaysia's most authoritative bodies in safety, health, construction, and road transport — giving you the assurance of working with consultants whose credentials are independently validated by the country's leading institutions.</p>
+    </div>
+
+    <div class="cred-points-grid four">
+      <div class="cred-point-card">
+        <i class="fas fa-graduation-cap"></i>
+        <strong>UTM Qualified & Certified</strong>
+        <span>Qualified and certified through Universiti Teknologi Malaysia (UTMSPACE) — recognized credentials backing our practice.</span>
+      </div>
+      <div class="cred-point-card">
+        <i class="fas fa-road"></i>
+        <strong>MIROS Certified</strong>
+        <span>WRRS OSH-C certification — recognized competency for managing OSH risks in road-related work environments.</span>
+      </div>
+      <div class="cred-point-card">
+        <i class="fas fa-helmet-safety"></i>
+        <strong>CIDB Certified</strong>
+        <span>Construction Industry Development Board accredited — qualified to operate within Malaysia's regulated construction safety framework.</span>
+      </div>
+      <div class="cred-point-card">
+        <i class="fas fa-user-shield"></i>
+        <strong>NIOSH Certified</strong>
+        <span>National Institute of Occupational Safety and Health certified — formally trained in occupational safety and health practice.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section quals reveal" id="qualifications">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Professional Qualifications</div>
+        <h2 class="section-title">Full <em>credentials</em> portfolio</h2>
+      </div>
+      <p class="section-desc">Beyond being UTM-qualified and MIROS-certified, our team holds an extensive portfolio of internationally recognized qualifications and has practical, hands-on experience implementing safety standards required by Malaysian transport authorities.</p>
+    </div>
+    <div class="quals-list">
+      <div class="qual-item">
+        <div class="qual-num">01</div>
+        <div class="qual-content"><h4>UTM Qualified & Certified</h4><p>Qualified and certified by UTMSPACE, Universiti Teknologi Malaysia</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">02</div>
+        <div class="qual-content"><h4>WRRS OSH-C (MIROS)</h4><p>Work-Related Road Safety OSH Coordinator — Certified by MIROS & PERKESO</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">03</div>
+        <div class="qual-content"><h4>ISO 9001 & ISO 45001 Certified Auditor</h4><p>Quality Management & Occupational Health Safety Systems</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">04</div>
+        <div class="qual-content"><h4>Road Traffic Safety Management</h4><p>ISO 39001:2012 — Specialized for transport sector</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">05</div>
+        <div class="qual-content"><h4>Anti-Corruption System Auditor (ABMS)</h4><p>MS ISO 37001 — Anti-bribery management systems</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">06</div>
+        <div class="qual-content"><h4>ISO 45001:2018 OHS Management Auditor</h4><p>Occupational Health & Safety Management Systems Auditor</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">07</div>
+        <div class="qual-content"><h4>MOT & APAD Safety ICOP Implementation</h4><p>Practical hands-on experience with Malaysian transport authorities</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+      <div class="qual-item">
+        <div class="qual-num">08</div>
+        <div class="qual-content"><h4>Audit Documentation Expertise</h4><p>Technical knowledge in audit systems and industry compliance</p></div>
+        <i class="fas fa-certificate qual-icon"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section why reveal" id="why">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">Built for <em>results</em></h2>
+      </div>
+      <p class="section-desc">Choosing SIGMA means partnering with a team that is UTM-qualified and MIROS-certified — and that genuinely cares about getting your organization successfully audited.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><i class="fas fa-graduation-cap"></i></div><h4>UTM-Qualified Team</h4><p>Qualified and certified by Universiti Teknologi Malaysia — recognized credentials backing our work.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-book-open"></i></div><h4>In-Depth ICOP Knowledge</h4><p>Deep working understanding of ICOP guidelines and how they apply to real-world transport operations.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-handshake"></i></div><h4>Customer-Friendly Approach</h4><p>Professional service delivered in a clear, easy-to-understand way — no jargon, just actionable guidance.</p></div>
+      <div class="why-card"><div class="why-icon"><i class="fas fa-circle-check"></i></div><h4>Full Support Until Audit</h4><p>We walk with you through every stage — from initial review right through to final audit assessment.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <div class="contact-inner">
+    <div class="contact-eyebrow">— Get In Touch Today —</div>
+    <h2>Ready to be <em>audit-ready</em>?</h2>
+    <p class="contact-lede">Reach out to our team directly via WhatsApp for a no-obligation consultation. We'll review your situation and recommend the right starting point for your ICOP Safety compliance journey.</p>
+    <div class="contact-options">
+      <a href="https://wa.me/60143039980?text=Salam%2C%20saya%20berminat%20dengan%20perkhidmatan%20Sigma%20Safety" class="contact-card">
+        <i class="fab fa-whatsapp wa-icon"></i>
+        <div class="label">WhatsApp — SJB</div>
+        <div class="num">014-303 9980</div>
+        <div class="who">Tap to chat directly</div>
+      </a>
+      <a href="https://wa.me/60177304004?text=Salam%2C%20saya%20berminat%20dengan%20perkhidmatan%20Sigma%20Safety" class="contact-card">
+        <i class="fab fa-whatsapp wa-icon"></i>
+        <div class="label">WhatsApp — Sigma</div>
+        <div class="num">017-730 4004</div>
+        <div class="who">Tap to chat directly</div>
+      </a>
+    </div>
+    <a href="mailto:info.directorygovmy@gmail.com" class="contact-email"><i class="fas fa-envelope"></i> info.directorygovmy@gmail.com</a>
+    <div class="contact-note">FREE INITIAL CONSULTATION • RESPONSE WITHIN 24 HOURS • MALAYSIA NATIONWIDE</div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div class="foot-brand">
+      <a href="#" class="logo"><span class="logo-mark"><i class="fas fa-shield-halved"></i></span>SIGMA<em>Safety</em></a>
+      <p>Sigma Safety & Health Consultancy Services — UTM-qualified and MIROS-certified, specializing in ICOP Safety internal audits and training for the transportation, logistics, and mechanical & electrical industries in Malaysia.</p>
+    </div>
+    <div>
+      <h5>Navigate</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#credential">Certified</a></li>
+        <li><a href="#qualifications">Qualifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">ICOP Document Audit</a></li>
+        <li><a href="#services">Safety Training</a></li>
+        <li><a href="#services">Risk Assessment</a></li>
+        <li><a href="#services">Accident Investigation</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="https://wa.me/60143039980"><i class="fab fa-whatsapp"></i> 014-303 9980 (SJB)</a></li>
+        <li><a href="https://wa.me/60177304004"><i class="fab fa-whatsapp"></i> 017-730 4004 (Sigma)</a></li>
+        <li><a href="mailto:info.directorygovmy@gmail.com"><i class="fas fa-envelope"></i> Email Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div>© 2026 Sigma Safety & Health Consultancy Services. All rights reserved.</div>
+    <div>Designed with safety in mind.</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/60143039980?text=Salam%2C%20saya%20berminat%20dengan%20perkhidmatan%20Sigma%20Safety" class="float-wa" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in')}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')});
+  });
+</script>
+
+</body>
+</html>
